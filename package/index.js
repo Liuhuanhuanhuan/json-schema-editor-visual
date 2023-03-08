@@ -6,39 +6,61 @@ import utils from './utils'
 import moox from 'moox'
 import schema from './models/schema'
 import PropTypes from 'prop-types'
+import { isEmpty, cloneDeep } from 'loadsh'
+const merge = require('deepmerge')
 
-module.exports = (config = {})=>{
-  if(config.lang) utils.lang = config.lang;
-  
+module.exports = (config = {}) => {
+  if (config.lang) utils.lang = config.lang
+
   const Model = moox({
-    schema
+    schema,
   })
-  if(config.format){
+  if (config.format) {
     Model.__jsonSchemaFormat = config.format
   } else {
     Model.__jsonSchemaFormat = utils.format
   }
 
-  if(config.mock) {
+  if (config.mock) {
     Model.__jsonSchemaMock = config.mock
   }
 
-  
+  const store = Model.getStore()
 
-  const store = Model.getStore();
+  const Component = (props) => {
+    const { data, disableData } = props
+    if (!isEmpty(data) && !isEmpty(disableData)) {
+      const newData = merge(data, disableData)
+      props = {
+        ...props,
+        data: JSON.stringify(newData),
+      }
+    } else {
+      props = {
+        ...props,
+        data: JSON.stringify(data),
+      }
+    }
 
-  const Component = (props)=>{
-    return <Provider store={store} className="wrapper">
-      <App Model={Model} {...props} />
-    </Provider>
+    const onChange = (data) => {
+      const schema = data
+        ? utils.deleteProperty(JSON.parse(data), 'disableEdit')
+        : data
+      props.handleChange(schema)
+    }
+
+    props.onChange = onChange
+    return (
+      <Provider store={store} className="wrapper">
+        <App Model={Model} {...props} />
+      </Provider>
+    )
   }
 
   Component.propTypes = {
     data: PropTypes.string,
     onChange: PropTypes.func,
-    showEditor: PropTypes.bool
+    showEditor: PropTypes.bool,
   }
-  return Component;
-
+  return Component
 }
-

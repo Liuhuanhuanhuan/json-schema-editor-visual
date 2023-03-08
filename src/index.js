@@ -1,10 +1,11 @@
-import React from 'react';
-import { render } from 'react-dom';
-import 'antd/dist/antd.css';
+import React from 'react'
+import { render } from 'react-dom'
+import 'antd/dist/antd.css'
+import { standardSchema, notStandardSchema } from './schema'
 
 import '../dist/main.css'
-const jeditor = require('../dist/main');
-//const jeditor = require('../package/index.js');
+const jeditor = require('../package/index')
+
 const mock = [
   { name: '字符串', mock: '@string' },
   { name: '自然数', mock: '@natural' },
@@ -17,50 +18,31 @@ const mock = [
   { name: 'id', mock: '@id' },
   { name: 'guid', mock: '@guid' },
   { name: '当前时间', mock: '@now' },
-  { name: '时间戳', mock: '@timestamp' }
-];
+  { name: '时间戳', mock: '@timestamp' },
+]
 
-const JEditor1 = jeditor({mock: mock});
-
+const JEditor1 = jeditor({ mock: mock, lang: 'zh_CN' })
 render(
   <div>
-    <a target="_blank" href="https://github.com/YMFE/json-schema-editor-visual">
-      <h1>JSON-Schema-Editor</h1>
-    </a>
-    <p style={{ fontSize: '16px' }}>
-      A json-schema editor of high efficient and easy-to-use, base on React.{' '}
-      <a target="_blank" href="https://github.com/YMFE/json-schema-editor-visual">
-        Github
-      </a>
-    </p>
-    <br />
-    <h3>
-      The tool has been used for open source api management platforms：{' '}
-      <a target="_blank" href="https://github.com/ymfe/yapi">
-        YApi
-      </a>
-    </h3>
-
-    <br />
-    <h2>Example:</h2>
-    <hr />
-
     <JEditor1
-      showEditor={true}
-      isMock={false}
-      data={''}
-      onChange={e => {
-        console.log('changeValue', e);
+      showEditor={false}
+      showImportButton={false}
+      data={standardSchema}
+      disableData={notStandardSchema}
+      showSaveButton={true}
+      handleChange={(e) => {
+        console.log('changeValue', e)
       }}
     />
-
-    {/* <JEditor2
-      showEditor={true}
-      data={null}
-      onChange={e => {
-        // console.log("changeValue", e);
-      }}
-    /> */}
   </div>,
   document.getElementById('root')
-);
+)
+
+/**
+ * 功能拆分：
+ * 1. 需要直接传入json-scheme
+ * 2. 需要隐藏可视化区域
+ * 3. 需要隐藏导入的功能
+ * 4. 新增不可编辑功能
+ *
+ * */
