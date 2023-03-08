@@ -294,7 +294,7 @@ class SchemaArray extends PureComponent {
                 </span>
               )}
 
-              {items.type === 'object' && (!disabled || value === 'cur') ? (
+              {items.type === 'object' && (!disabled || value === 'self') ? (
                 <span onClick={this.handleAddChildField}>
                   <Tooltip
                     placement="top"
@@ -614,7 +614,7 @@ class SchemaItem extends PureComponent {
                 <CloseOutlined type="close" className="close" />
               </span>
             )}
-            {!disabled || value.disableEdit === 'cur' ? (
+            {!disabled || value.disableEdit === 'self' ? (
               value.type === 'object' ? (
                 <DropPlus prefix={prefix} name={name} />
               ) : (

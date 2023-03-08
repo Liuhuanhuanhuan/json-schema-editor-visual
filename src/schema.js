@@ -198,7 +198,7 @@ const notStandardSchema = {
     },
     unResolvedProblemDTO: {
       type: 'object',
-      disableEdit: 'cur',
+      disableEdit: 'self',
       properties: {
         count: {
           type: 'string',
@@ -229,7 +229,7 @@ const notStandardSchema = {
           type: 'array',
           items: {
             type: 'object',
-            disableEdit: 'cur',
+            disableEdit: 'self',
             properties: {
               a: {
                 type: 'number',
