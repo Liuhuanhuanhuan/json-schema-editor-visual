@@ -1,5 +1,5 @@
 {
-  "name": "@huan007/json-schema-editor-visual",
+  "name": "@huan0007/json-schema-editor-visual",
   "version": "2.0.0",
   "description": "jsonschema editor",
   "main": "package/index.js",
