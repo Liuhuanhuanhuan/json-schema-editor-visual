@@ -4,7 +4,7 @@ import 'antd/dist/antd.css'
 import { standardSchema, notStandardSchema } from './schema'
 
 import '../dist/main.css'
-const jeditor = require('../package/index')
+const jeditor = require('../dist/main')
 
 const mock = [
   { name: '字符串', mock: '@string' },
