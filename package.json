@@ -1,9 +1,8 @@
 {
-  "name": "@huan0007/json-schema-editor-visual",
+  "name": "@huan007/json-schema-editor-new",
   "version": "2.0.0",
   "description": "jsonschema editor",
   "main": "package/index.js",
-  "license": "MIC",
   "scripts": {
     "start": "ykit s -p 8082",
     "demo": "NODE_ENV=production ykit pack -m",
