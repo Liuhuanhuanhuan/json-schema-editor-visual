@@ -27,8 +27,8 @@ render(
     <JEditor1
       showEditor={false}
       showImportButton={false}
-      data={standardSchema}
-      disableData={notStandardSchema}
+      data={JSON.stringify(notStandardSchema)}
+      // disableData={notStandardSchema}
       showSaveButton={true}
       handleChange={(e) => {
         console.log('changeValue', e)

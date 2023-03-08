@@ -6,7 +6,7 @@ import utils from './utils'
 import moox from 'moox'
 import schema from './models/schema'
 import PropTypes from 'prop-types'
-import { isEmpty, cloneDeep } from 'loadsh'
+import { isEmpty } from 'loadsh'
 const merge = require('deepmerge')
 
 module.exports = (config = {}) => {
@@ -28,31 +28,31 @@ module.exports = (config = {}) => {
   const store = Model.getStore()
 
   const Component = (props) => {
-    const { data, disableData } = props
-    if (!isEmpty(data) && !isEmpty(disableData)) {
-      const newData = merge(data, disableData)
-      props = {
-        ...props,
-        data: JSON.stringify(newData),
-      }
-    } else {
-      props = {
-        ...props,
-        data: JSON.stringify(data),
-      }
-    }
+    // const { data, disableData } = props
+    // if (!isEmpty(data) && !isEmpty(disableData)) {
+    //   const newData = merge(data, disableData)
+    //   props = {
+    //     ...props,
+    //     data: JSON.stringify(newData),
+    //   }
+    // } else {
+    //   props = {
+    //     ...props,
+    //     data: JSON.stringify(data),
+    //   }
+    // }
 
     const onChange = (data) => {
       const schema = data
         ? utils.deleteProperty(JSON.parse(data), 'disableEdit')
         : data
-      props.handleChange(schema)
+      props.handleChange && props.handleChange(schema)
     }
 
-    props.onChange = onChange
+    const newProps = merge(props, { onChange: onChange })
     return (
       <Provider store={store} className="wrapper">
-        <App Model={Model} {...props} />
+        <App Model={Model} {...newProps} />
       </Provider>
     )
   }

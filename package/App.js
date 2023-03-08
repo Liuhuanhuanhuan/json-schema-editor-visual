@@ -282,16 +282,12 @@ class jsonSchema extends React.Component {
       checked,
       editorModalName,
     } = this.state
-    const {
-      showSaveButton = false,
-      schema,
-      showImportButton = true,
-    } = this.props
+    const { showSaveButton, schema, showImportButton } = this.props
     let disabled =
       this.props.schema.type === 'object' || this.props.schema.type === 'array'
         ? false
         : true
-
+    console.log('props-1', this.props)
     return (
       <div className="json-schema-react-editor">
         {showImportButton && (
