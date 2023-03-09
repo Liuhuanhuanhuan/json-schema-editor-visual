@@ -25,11 +25,11 @@ const JEditor1 = jeditor({ mock: mock, lang: 'zh_CN' })
 render(
   <div>
     <JEditor1
-      showEditor={false}
-      showImportButton={false}
+      showEditor={true}
+      showImportButton={true}
       data={JSON.stringify(notStandardSchema)}
-      // disableData={notStandardSchema}
       showSaveButton={true}
+      contentHeight="400px"
       handleChange={(e) => {
         console.log('changeValue', e)
       }}

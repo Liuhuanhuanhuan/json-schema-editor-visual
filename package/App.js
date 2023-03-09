@@ -282,7 +282,12 @@ class jsonSchema extends React.Component {
       checked,
       editorModalName,
     } = this.state
-    const { showSaveButton, schema, showImportButton } = this.props
+    const {
+      showSaveButton,
+      schema,
+      showImportButton,
+      contentHeight = '200px',
+    } = this.props
     let disabled =
       this.props.schema.type === 'object' || this.props.schema.type === 'array'
         ? false
@@ -391,7 +396,12 @@ class jsonSchema extends React.Component {
           {this.props.showEditor && (
             <Col span={8}>
               <AceEditor
-                className="pretty-editor"
+                // className="pretty-editor"
+                style={{
+                  height: contentHeight,
+                  border: '1px solid #d9d9d9',
+                  borderRadius: '4px',
+                }}
                 mode="json"
                 data={JSON.stringify(schema, null, 2)}
                 onChange={this.handleParams}
@@ -401,6 +411,7 @@ class jsonSchema extends React.Component {
           <Col
             span={this.props.showEditor ? 16 : 24}
             className="wrapper object-style"
+            style={{ height: contentHeight }}
           >
             <Row type="flex" align="middle">
               <Col span={8} className="col-item name-item col-item-name">
