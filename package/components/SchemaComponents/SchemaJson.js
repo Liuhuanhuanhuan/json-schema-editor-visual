@@ -440,7 +440,7 @@ class SchemaItem extends PureComponent {
     if (isEmpty(prefixArray) || isEmpty(data)) return false
     let tempData = data
     for (let i = 0; i < prefixArray.length; i++) {
-      tempData = tempData[prefixArray[i]]
+      tempData = isEmpty(tempData) ? {} : tempData[prefixArray[i]]
       if (
         !isEmpty(tempData) &&
         tempData.disableEdit &&
@@ -466,7 +466,6 @@ class SchemaItem extends PureComponent {
     let show = this.context.getOpenValue([prefixStr])
     let showIcon = this.context.getOpenValue([prefixArrayStr])
     let initData = this.context.initData
-
     // 禁止编辑
     let disabled = _.isUndefined(value.disableEdit)
       ? this.handleDisableEdit(initData, prefixArray)

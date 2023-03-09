@@ -122,7 +122,7 @@ class jsonSchema extends React.Component {
       changeCustomValue: this.changeCustomValue,
       Model: this.props.Model,
       isMock: this.props.isMock,
-      initData: this.props.data ? JSON.parse(this.props.data) : {},
+      initData: this.props.schema,
     }
   }
 
