@@ -23,13 +23,16 @@ const mock = [
 
 const JEditor1 = jeditor({ mock: mock, lang: 'zh_CN' })
 render(
-  <div>
+  <div style={{ height: '500px' }}>
     <JEditor1
       showEditor={true}
       showImportButton={true}
       data={JSON.stringify(notStandardSchema)}
       showSaveButton={true}
-      contentHeight="400px"
+      // contentHeight="100%"
+      handleSave={(val) => {
+        console.log('save', val)
+      }}
       handleChange={(e) => {
         console.log('changeValue', e)
       }}

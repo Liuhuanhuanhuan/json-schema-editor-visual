@@ -19,43 +19,50 @@
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(0, 0, 0, 0.2);
 }
-
-.json-schema-react-editor {
+.json-schema-react-editor-wrapper {
+  height: 100%;
+  padding: 10px 0;
+}
+.json-schema-react-editor-wrapper .json-schema-react-editor {
   font-size: 14px;
+  height: 100%;
+  overflow-y: auto;
 }
 
-.save-button {
+.json-schema-react-editor-wrapper .save-button {
   margin-top: 12px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.json-schema-react-editor .array-item-type {
+.json-schema-react-editor-wrapper .json-schema-react-editor .array-item-type {
   text-align: left;
 }
 
-.json-schema-react-editor .add-btn {
+.json-schema-react-editor-wrapper .json-schema-react-editor .add-btn {
   margin: 8px;
 }
 
-.json-schema-react-editor .pretty-editor {
+.json-schema-react-editor-wrapper .json-schema-react-editor .pretty-editor {
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   height: 800px;
 }
 
-.json-schema-react-editor .import-json-button {
+.json-schema-react-editor-wrapper .import-json-button {
   margin: 5px;
 }
 
-.json-schema-react-editor
+.json-schema-react-editor-wrapper
+  .json-schema-react-editor
   .certain-category-search
   .ant-select-selection--single {
   height: 32px;
 }
 
-.json-schema-react-editor
+.json-schema-react-editor-wrapper
+  .json-schema-react-editor
   .certain-category-search
   .ant-select-search__field__wrap {
   display: unset;

@@ -84,8 +84,8 @@
 .json-schema-react-editor .wrapper {
   padding-left: 8px;
   border-radius: 4px;
-  height: 800px;
-  overflow-y: scroll;
+  /* height: 800px;
+  overflow-y: scroll; */
 }
 
 .schema-content {
